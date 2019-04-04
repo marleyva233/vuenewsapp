@@ -4,16 +4,17 @@
       <app-search v-on:newsChanged="getNews">
       </app-search>
     </div>
-     <div>
+      <div>
+        <h6>Sort By: </h6>
         <label for="title">title</label>
         <input type="radio" id="title" value="title"
         v-model="sortCriteria">    
         <br>
          <div>
-        <label for="author">author</label>
-        <input type="radio" id="author" value="author"
+          <label for="author">author</label>
+          <input type="radio" id="author" value="author"
         v-model="sortCriteria">    
-    </div>
+        </div>
     </div>
     <div class="row">
       <app-articles v-for="newsArticle in sortedArticles"
@@ -22,6 +23,7 @@
     </div>
   </div>
 </template>
+
 <!-- --------------------------------------------- -->
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
@@ -31,7 +33,7 @@ export default {
   data: function() {
     return {
       articles: [],
-      searchQ: 'politics',
+      searchQ: 'technology',
       sortCriteria: ''
     }
   },
@@ -45,7 +47,7 @@ export default {
             return response.json();
         })
         .then(function(data) {
-            console.log(data)
+            console.log(data);
             that.articles = data.articles;
         })
         this.searchQ = '';
@@ -85,5 +87,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+p, body{
+  font-size: 14px;
+  text-align: left;
+  text-indent: 5px;
 }
 </style>
